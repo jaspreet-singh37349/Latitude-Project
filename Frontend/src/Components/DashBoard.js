@@ -27,7 +27,7 @@ class DashBoard extends Component{
                 <Navbar />
                 <div style={{display:"flex",marginTop:"50px",flexWrap:"wrap"}}>
                     {this.props.images.map(image=>{
-                        return <img className="fade-in" style={{width:"300px",height:"300px",margin:"50px"}} src={image} alt="error" />
+                        return <img key={image} className="fade-in" style={{width:"300px",height:"300px",margin:"50px"}} src={image} alt="error" />
                     })}
                 </div>
             </div>
