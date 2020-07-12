@@ -18,13 +18,14 @@ class Navbar extends Component {
 
     render()
     {
+        console.log(this.props.auth)
 
         return (
             <div style={{flexGrow:1}}>
               <AppBar position="static">
                 <Toolbar>
                   <Typography variant="h6" style={{flexGrow:1}} >
-                    Welcome Jaspreet Singh
+                    Welcome {this.props.auth.user.email}
                   </Typography>
                   <Button onClick={this.handleLogout} color="inherit">Logout</Button>
                 </Toolbar>

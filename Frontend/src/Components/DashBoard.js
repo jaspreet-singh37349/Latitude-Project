@@ -3,12 +3,14 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import AOS from 'aos';
 
 class DashBoard extends Component{
 
 
     componentDidMount()
     {
+        AOS.init();
         axios.get("http://127.0.0.1:5000").then(res=>{
             console.log(res)
         })
@@ -25,9 +27,9 @@ class DashBoard extends Component{
         return (
             <div>
                 <Navbar />
-                <div style={{display:"flex",marginTop:"50px",flexWrap:"wrap"}}>
-                    {this.props.images.map(image=>{
-                        return <img key={image} className="fade-in" style={{width:"300px",height:"300px",margin:"50px"}} src={image} alt="error" />
+                <div style={{display:"flex",marginTop:"50px",flexDirection:"column",alignItems:"center"}}>
+                    {this.props.images.map((image,index)=>{
+                        return <img key={image} data-aos={index%2===0?"fade-right":"fade-left"} style={{width:"40vw",height:"50vh",margin:"50px"}} src={image} alt="error" />
                     })}
                 </div>
             </div>
